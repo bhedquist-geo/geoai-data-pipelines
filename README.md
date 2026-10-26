@@ -14,6 +14,8 @@ Earth Engine (rasters) → BigQuery / Databricks (optional) → DuckDB / MotherD
 | File | Description |
 |---|---|
 | `geoai_motherduck_pipeline.ipynb` | The tutorial notebook (26 cells, no saved outputs) |
+| `.gitignore` | Blocks credentials, keys, tokens and local data files from being committed |
+| `.pre-commit-config.yaml` | Automatically clears notebook outputs before each commit (see below) |
 
 ## What you need
 
@@ -52,11 +54,29 @@ The monthly NDVI and precipitation values are a **synthetic stand-in** (tagged `
 
 County polygons come from a public GeoJSON file of US counties, filtered to Texas (254 counties).
 
+## Credentials and privacy
+
+If you adapt this notebook to your own Earth Engine, BigQuery or MotherDuck accounts, keep your private information out of any public copy:
+
+- **Log in locally, never in the notebook.** Run `earthengine authenticate` and `gcloud auth application-default login` on your own computer, and set `motherduck_token` as an environment variable. These store credentials outside the repository.
+- **Never commit secrets.** That includes tokens, `.env` files, service-account JSON keys and database files. The included `.gitignore` blocks the common ones, but it is a safety net, not a guarantee.
+- **Use placeholders.** Keep `YOUR_PROJECT` in shared notebooks. A project ID is not a password, but it does identify your account.
+- **Clear notebook outputs before committing.** Saved outputs can reveal project IDs, account emails, file paths and data. To do this automatically, run these once in your clone:
+
+  ```bash
+  pip install pre-commit nbstripout
+  pre-commit install
+  ```
+
+  After that, outputs are stripped from notebooks every time you run `git commit`.
+- **Know the limits.** The hook only runs when you commit with Git on your computer. Uploading a file through the GitHub website skips it, so clear outputs first (Jupyter: *Edit > Clear Outputs of All Cells*).
+- **Keep real research data out.** Use only synthetic or public data in public repositories. Keep unpublished research in a private repository.
+- **If a secret is ever committed, revoke it immediately** in Google Cloud, Earth Engine or MotherDuck. Deleting the file is not enough, because it remains in the repository history.
+
 ## Notes
 
 - All tables are created in a separate `geoai_pipeline_demo` database. The last notebook cell shows how to drop it.
 - Spatial functions generally take `(lon, lat)`, but `ST_Distance_Spheroid` expects `(lat, lon)`. Passing the wrong order returns `NaN` with no error. The notebook demonstrates this.
-- Do not commit tokens or saved notebook outputs that contain account details.
 
 ## License
 
