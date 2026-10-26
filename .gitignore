@@ -1,0 +1,71 @@
+# ============================================================
+# Keep credentials, private data and personal info OUT of this repo
+# ============================================================
+
+# --- Secrets and tokens ---
+.env
+.env.*
+*.env
+secrets/
+*secret*
+*token*
+*.pem
+*.key
+*.p12
+*.pfx
+.motherduck/
+.duckdb/
+
+# --- Google Cloud / BigQuery credentials ---
+# Service account keys and application default credentials
+*service-account*.json
+*service_account*.json
+*credentials*.json
+*client_secret*.json
+application_default_credentials.json
+gcloud/
+.config/gcloud/
+
+# --- Earth Engine credentials ---
+# (earthengine authenticate saves these in your home folder, not the repo)
+.config/earthengine/
+credentials
+*.ee_credentials
+
+# --- Databricks ---
+.databrickscfg
+.databricks/
+
+# --- Local data files (keep real or private data out of this public repo) ---
+*.duckdb
+*.duckdb.wal
+*.db
+*.sqlite
+*.parquet
+*.geoparquet
+*.gpkg
+*.shp
+*.shx
+*.dbf
+*.geojson
+*.tif
+*.tiff
+*.nc
+*.zarr/
+*.csv
+data/
+private/
+raw/
+
+# --- Notebook and Python clutter ---
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# --- OS / editor files ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
