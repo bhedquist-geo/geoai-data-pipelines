@@ -1,0 +1,12 @@
+# Runs automatically before every `git commit` on your computer.
+# One-time setup per clone:
+#   pip install pre-commit nbstripout
+#   pre-commit install
+#
+# nbstripout removes saved cell outputs (which can contain project IDs,
+# account emails, file paths or data) from notebooks before they are committed.
+repos:
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.8.1   # run `pre-commit autoupdate` to move to the latest release
+    hooks:
+      - id: nbstripout
