@@ -80,4 +80,4 @@ If you adapt this notebook to your own Earth Engine, BigQuery or MotherDuck acco
 
 ## License
 
-No license has been specified yet. Until one is added, all rights are reserved by the author. If you would like to reuse this material, please open an issue.
+This repository is released under the MIT License (see LICENSE). You are welcome to clone, fork, and adapt the notebooks for teaching and learning.
