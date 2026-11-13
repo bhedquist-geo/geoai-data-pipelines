@@ -1,6 +1,6 @@
 # GeoAI Data Pipelines: Earth Engine → BigQuery → DuckDB / MotherDuck
 
-A hands-on notebook showing where DuckDB and MotherDuck fit in a GeoAI workflow.
+A hands-on notebook showing where DuckDB and MotherDuck fit in a GeoAI workflow. This repo is a test case for automated pull request review.
 
 **Core idea:** keep large imagery in raster tools (Google Earth Engine, COG, Zarr). Reduce it to vector and tabular results (zonal statistics, point samples, features). Then use SQL for joins, validation, aggregation and sharing.
 
